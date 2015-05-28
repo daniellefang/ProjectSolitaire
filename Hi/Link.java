@@ -2,11 +2,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.applet.*;
 
-////////////////////////
-// Defines a Link class
-//
-// used by LinkedList
-////////////////////////
 class Link
 {
   private Object valueField;
