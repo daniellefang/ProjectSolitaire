@@ -1,4 +1,8 @@
-class DeckPile extends CardPile 
+import java.awt.*;
+import java.applet.*;
+import java.awt.event.*;
+
+public class DeckPile extends CardPile 
 {
   DeckPile (int x, int y) 
   {
@@ -39,7 +43,7 @@ class DeckPile extends CardPile
     }
   }
   
-  public void select(int tx, int ty) 
+  /** public void select(int tx, int ty) 
   {
     // if deck becomes empty, refill from discard pile
     if (empty())
@@ -52,5 +56,5 @@ class DeckPile extends CardPile
       }
     else
       Solitaire.discardPile.addCard(pop());
-  }
+  } **/
 }

@@ -1,3 +1,7 @@
+import java.awt.*;
+import java.applet.*;
+import java.awt.event.*;
+
 public class Card 
 {
     // data fields for colors and suits
