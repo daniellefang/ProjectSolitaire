@@ -4,7 +4,6 @@ import java.awt.event.*;
 
 public class Card 
 {
-    // data fields for colors and suits
     final static int width   = 50;
     final static int height  = 70;
 
@@ -22,12 +21,10 @@ public class Card
     private static String names[] = {"A", "2", "3", "4", "5", "6",
             "7", "8", "9", "10", "J", "Q", "K"};
 
-    // data fields
     private boolean faceup;
     private int rank;
     private int suit;
 
-    // constructor
     public Card (int s, int r) 
     {
         suit = s;
@@ -35,43 +32,36 @@ public class Card
         faceup = false;
     }
 
-    // get rank of card as an int in the interval [0, 12]
     public int rank() 
     { 
         return rank; 
     }
 
-    // get suit of card as an int in the interval [0, 3]
     public int suit() 
     { 
         return suit; 
     }
 
-    // true if card is face up, false otherwise
     public boolean faceUp() 
     { 
         return faceup; 
     }
 
-    // change value of faceup
     public void flip() 
     { 
         faceup = ! faceup; 
     }
 
-    // true if card is ace, false otherwise
     public boolean isAce()
     {
         return rank == ace;
     }
 
-    // true if card is king, false otherwise
     public boolean isKing()
     {
         return rank == king;
     }
 
-    // return color of card as an int in the range [0,1]
     public int color() 
     {
         if (suit() == heart || suit() == diamond)
@@ -80,14 +70,14 @@ public class Card
         return black;
     }
 
-    // draw the card
+
     public void draw (Graphics g, int x, int y) {
-        // clear rectangle, draw border
+        // draws the border
         g.clearRect(x, y, width, height);
         g.setColor(Color.black);
         g.drawRect(x, y, width, height);
 
-        // draw body of card
+        // draws the inside of the card
         if (faceUp()) 
         {
             if (color() == red)
@@ -134,12 +124,8 @@ public class Card
         }
         else // face down 
         {
-            g.setColor(Color.yellow);
-            g.drawLine(x+15, y+5, x+15, y+65);
-            g.drawLine(x+35, y+5, x+35, y+65);
-            g.drawLine(x+5, y+20, x+45, y+20);
-            g.drawLine(x+5, y+35, x+45, y+35);
-            g.drawLine(x+5, y+50, x+45, y+50);
+            g.setColor(Color.cyan);
+            g.fillRect(x,y,width,height);
         }
     }
 }

@@ -62,7 +62,7 @@ public class CardPile
   }
 
   // draw pile
-
+  
   {
     g.setColor(Color.black);
 
