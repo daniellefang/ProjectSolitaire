@@ -4,92 +4,93 @@ import java.awt.event.*;
 
 public class CardPile 
 {
-  // coordinates of the card pile
-  protected int x;
-  protected int y;
+    // coordinates of the card pile
+    protected int x;
+    protected int y;
 
-  // linked list of cards
-  protected LinkedList cardList;
+    // linked list of cards
+    protected LinkedList cardList;
 
-  public CardPile (int xl, int yl) 
-  {
-    x = xl;
-    y = yl;
-    cardList = new LinkedList();
-  }
+    public CardPile (int xl, int yl) 
+    {
+        x = xl;
+        y = yl;
+        cardList = new LinkedList();
+    }
 
-  /////////////////////////////////////
-  // access to cards are not overridden
-  
-  // true if pile is empty, false otherwise
-  public final boolean empty() 
-  { 
-    return cardList.empty();
-  }
+    /////////////////////////////////////
+    // access to cards are not overridden
 
-  // inspect card at the top of pile
-  public final Card top() 
-  { 
-    return (Card)cardList.front();
-  }
+    // true if pile is empty, false otherwise
+    public final boolean empty() 
+    { 
+        return cardList.empty();
+    }
 
-  // pop card at the top of pile
-  public final Card pop() 
-  {
-    return (Card)cardList.pop();
-  }
+    // inspect card at the top of pile
+    public final Card top() 
+    { 
+        return (Card)cardList.front();
+    }
 
-  /////////////////////////////////////////
-  // the following are sometimes overridden
+    // pop card at the top of pile
+    public final Card pop() 
+    {
+        return (Card)cardList.pop();
+    }
 
-  // true if point falls inside pile, false otherwise
-  public boolean includes (int tx, int ty) 
-  {
-    return x <= tx && tx <= x + Card.width &&
-           y <= ty && ty <= y + Card.height;
-  }
-        
-  // to be overridden by descendants
-  public void select (int tx, int ty) 
-  {
-    // do nothing
-  }
+    /////////////////////////////////////////
+    // the following are sometimes overridden
 
-  // add a card to pile
-  public void addCard (Card aCard) 
-  {
-    cardList.add(aCard);
-  }
+    // true if point falls inside pile, false otherwise
+    public boolean includes (int tx, int ty) 
+    {
+        return x <= tx && tx <= x + Card.width &&
+        y <= ty && ty <= y + Card.height;
+    }
 
-  // draw pile
+    // to be overridden by descendants
+    public void select (int tx, int ty) 
+    {
+        // do nothing
+    }
 
-  {
-    g.setColor(Color.black);
+    // add a card to pile
+    public void addCard (Card aCard) 
+    {
+        cardList.add(aCard);
+    }
 
-    if (cardList.empty())
-      g.drawRect(x, y, Card.width, Card.height);
-    else
-      top().draw(g, x, y);
-  }
+    // draw pile
+    public void draw (Graphics g, int x, int y) {
+        {
+            g.setColor(Color.black);
 
-  // to be overridden by descendants
-  public boolean canTake (Card aCard) 
-  {
-    return false; 
-  }
+            if (cardList.empty())
+                g.drawRect(x, y, Card.width, Card.height);
+            else
+                top().draw(g, x, y);
+        }
+    }
 
-  // get number of cards in pile
-  public int getNoCards()
-  {
-    int count = 0;
-    ListIterator iterator = cardList.iterator();
+    // to be overridden by descendants
+    public boolean canTake (Card aCard) 
+    {
+        return false; 
+    }
 
-    while (!iterator.atEnd())
-      {
-	count++;
-	iterator.next();
-      }
+    // get number of cards in pile
+    public int getNoCards()
+    {
+        int count = 0;
+        ListIterator iterator = cardList.iterator();
 
-    return count;
-  }
+        while (!iterator.atEnd())
+        {
+            count++;
+            iterator.next();
+        }
+
+        return count;
+    }
 }
