@@ -58,7 +58,7 @@ public class CardPile
   }
 
   // draw pile
-  public void display (Graphics g) 
+
   {
     g.setColor(Color.black);
 
